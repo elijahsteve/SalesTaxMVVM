@@ -1,0 +1,31 @@
+﻿<Window x:Class="SalesTaxMVVM.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="Sales Tax" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBox Text="{Binding SalesAmount}" HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="5" MaxLength="5" MinWidth="50" Width="75"/>
+        <Label  Name="lblSalesAmount" Content="Enter Sales Amount" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="5"/>
+        <Button Margin="5" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Command="{Binding CalculateTaxCommand}" HorizontalAlignment="Right" Width="54">
+            Calculate
+        </Button>
+        <CheckBox IsChecked="{Binding Checked, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Center" Content="Include County Tax"/>
+        <ListBox Grid.ColumnSpan="2" Margin="5,0,4.8,4.8" Grid.Row="2" >
+            <ListBoxItem Content="{Binding SalesAmountItem}"/>
+            <ListBoxItem Content="{Binding StateTaxItem}"/>
+            <ListBoxItem Content="{Binding CountyTaxItem}"/>
+            <ListBoxItem Content="{Binding SalesTotalTaxItem}"/>
+            <ListBoxItem Content="{Binding TotalAmountItem}"/>
+        </ListBox>
+    </Grid>
+</Window>
